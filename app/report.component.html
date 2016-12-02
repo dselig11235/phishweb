@@ -1,0 +1,21 @@
+<div *ngIf="report">
+    newb = document.querySelector('#tabPhoneCallDetails &gt; tbody &gt; tr:nth-child(1) &gt; td &gt; a');
+    <pre *ngFor="let log of report; let log_idx=index">
+        newb.click();
+        times = document.querySelectorAll('#tabPhoneCallDetails &gt; tbody &gt; tr:nth-child({{log_idx+4}}) &gt; td:nth-child(1) &gt; input');
+        rest = document.querySelector('#tabPhoneCallDetails &gt; tbody &gt; tr:nth-child({{log_idx+4}}) &gt; td:nth-child(2)');
+        <pre *ngFor="let call of log.calls; let call_idx=index">
+            times[{{call_idx + 1}}].value={{'"' + call.time + '"'}};
+        </pre>
+        rest.querySelector('input:nth-child(1)').value = {{'"' + log.user.name + '"'}};
+        rest.querySelector('input:nth-child(2)').value = {{'"' + log.user.phone + '"'}};
+        rest.querySelector('input:nth-child(3)').value = {{'"' + log.user.extension + '"'}};
+        rest.querySelector('select').value = {{'"' + log.result + '"'}};
+        rest.querySelector('textarea').innerHTML = {{'"' + log.description + '"'}};
+    </pre>
+</div>
+
+
+
+
+

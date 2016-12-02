@@ -1,0 +1,19 @@
+td {
+    padding: 1em;
+}
+label {
+    display: inline-block;
+    width: 5em;
+}
+
+input,textarea {
+    width: 100%;
+}
+
+#contact-row {
+    height: 30em;
+}
+
+#contact-row textarea {
+    height: 100%;
+}

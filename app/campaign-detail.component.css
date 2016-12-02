@@ -1,0 +1,20 @@
+#campaign-info {
+    position:fixed;
+    width: 14em;
+}
+
+#campaign-log {
+    margin-left: 17em;
+}
+
+my-log {
+    background: #caddf9;
+    display: block;
+    position: relative;
+    padding: 1em;
+    border-radius: 5px;
+    margin: .5em;
+}
+
+#user-chooser {
+}

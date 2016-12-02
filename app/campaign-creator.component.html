@@ -1,0 +1,85 @@
+<table>
+<tr>
+    <td>
+        <label>Campaign name</label>
+    </td>
+    <td colspan="3">
+        <input [(ngModel)]="campaign.name">
+    </td>
+</tr>
+<tr>
+    <td>
+        <label>Company</label>
+    </td>
+    <td>
+        <input [(ngModel)]="campaign.company">
+    </td>
+    <td>
+        <label>Number of calls</label>
+    </td>
+    <td>
+        <input [(ngModel)]="campaign.numcalls" type="number">
+    </td>
+</tr>
+<tr>
+    <td>
+        <label>Person to impersonate</label>
+    </td>
+    <td colspan="3">
+        <textarea [(ngModel)]="spoof_block"></textarea>
+    </td>
+</tr>
+<tr>
+    <td>
+        <label>Pretext / Goal</label>
+    </td>
+    <td colspan="3">
+        <textarea [(ngModel)]="campaign.pretext"></textarea>
+    </td>
+</tr>
+<tr>
+    <td>
+        <div>
+            <label>Open</label>
+        </div>
+        <div>
+            <label>Close</label>
+        </div>
+    </td>
+    <td>
+        <div>
+            <input type="time" step="900" [(ngModel)]="campaign.open">
+        </div>
+        <div>
+            <input type="time" step="900" [(ngModel)]="campaign.close">
+        </div>
+    </td>
+    <td>
+        <label>UTC offset</label>
+    </td>
+    <td>
+        <input type="number" min="-12" max="14" [(ngModel)]="campaign.utc_offset">
+    </td>
+</tr>
+<tr>
+    <td>
+        <label>Notes</label>
+    </td>
+    <td colspan="3">
+        <textarea [(ngModel)]="campaign.notes"></textarea>
+    </td>
+</tr>
+<tr id="contact-row">
+    <td>
+        <label>Contacts</label>
+    </td>
+    <td colspan="3">
+        <textarea [(ngModel)]="contacts_block"></textarea>
+    </td>
+</tr>
+<tr>
+    <td>
+        <button (click)="create(campaign)">Create</button>
+    </td>
+</tr>
+</table>

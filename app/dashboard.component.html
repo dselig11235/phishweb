@@ -1,0 +1,11 @@
+<h3>Campaigns</h3>
+<ul class="campaigns">
+    <li *ngFor="let campaign of campaigns" 
+        [id]="'campaign-' + campaign.id"
+        (click)="gotoDetail(campaign)">
+        <span>{{campaign.name}}</span> 
+        <span>{{campaign.company}}</span>
+    </li>
+</ul>
+
+

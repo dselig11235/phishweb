@@ -1,0 +1,48 @@
+{{log.user.name}} {{log.user.phone}} {{log.user.info}}
+<ol>
+    <li *ngFor="let call of log.calls">
+        <div>
+            <button (click)="removeCall(call)">Delete</button>
+            <button (click)="call.editable = true">Edit</button>
+            <div *ngIf="!call.editable">
+                {{tzAdjustedTime(call) | date:"MM/dd/yy a"}} {{call.result}}
+            </div>
+            <div *ngIf="call.editable">
+                <label>Date</label><input [(ngModel)]="call.time">
+                <label>Person impersonated</label>
+                <select [(ngModel)]="call.spoofed">
+                    <option *ngFor="let spoofed of impersonate; let idx=index" [value]="idx">
+                        {{spoofed.name}} {{spoofed.phone}} {{spoofed.info}}
+                    </option>
+                </select>
+                <label>Notes</label>
+                <textarea [(ngModel)]="call.notes"></textarea>
+                <label>breached</label>
+                <textarea [(ngModel)]="call.breached"></textarea>
+                <select [(ngModel)]="call.result">
+                    <option value="failed">Failed</option>
+                    <option value="passed">Passed</option>
+                    <option value="vm">No Answer</option>
+                </select>
+                <button (click)="call.editable = false">Save</button>
+            </div>
+        </div>
+    </li>
+    <li *ngIf="!log.is_closed">
+        <label>Date</label><input [(ngModel)]="newCall.time">
+        <label>Person impersonated</label>
+        <select [(ngModel)]="newCall.spoofed">
+            <option *ngFor="let spoofed of impersonate; let idx=index" [value]="idx">
+                {{spoofed.name}} {{spoofed.phone}} {{spoofed.info}}
+            </option>
+        </select>
+        <label>Notes</label>
+        <textarea [(ngModel)]="newCall.notes"></textarea>
+        <label>breached</label>
+        <textarea [(ngModel)]="newCall.breached"></textarea>
+        <button (click)="saveResult('failed')">Failed</button>
+        <button (click)="saveResult('passed')">Passed</button>
+        <button (click)="saveResult('vm')">No Answer</button>
+    </li>
+</ol>
+

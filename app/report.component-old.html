@@ -1,0 +1,29 @@
+<pre *ngIf="report">
+<tr *ngFor="let log of report">
+    <td style="vertical-align: top;">
+        <input type="hidden" id="phoneEngagementDetailID" name="phoneEngagementDetailID" value="0">
+        <input type="text" name="phoneEngagementDetailCallAttempt1" [(ngModel)]="log.calls[0].time" class="datePickerInput hasDatepicker" value="" id="dp1480349306911">
+        <br>
+        <input type="text" name="phoneEngagementDetailCallAttempt2" [(ngModel)]="log.calls[1].time" class="datePickerInput hasDatepicker" value="" id="dp1480349306912">
+        <br>
+        <input type="text" name="phoneEngagementDetailCallAttempt3" [(ngModel)]="log.calls[2].time" class="datePickerInput hasDatepicker" value="" id="dp1480349306913">
+    </td>
+    <td>
+        <input type="text" maxlength="50" style="width: 180px" [(ngModel)]="log.user.name" id="phoneEngagementDetailName" name="phoneEngagementDetailName" value="">&nbsp;&nbsp;&nbsp;
+        <input type="text" style="width: 110px" maxlength="12" [(ngModel)]="log.user.phone" id="phoneEngagementDetailPhoneNumber" name="phoneEngagementDetailPhoneNumber" value="">&nbsp;&nbsp;&nbsp;
+        <input type="text" style="width: 60px" maxlength="7" [(ngModel)]="log.user.extension" id="phoneEngagementDetailExtension" name="phoneEngagementDetailExtension" value="">&nbsp;&nbsp;&nbsp;
+        <select [(ngModel)]="log.result" name="phoneEngagementDetailFinalCallResultID">
+            <option value="1">Cooperated</option>
+            <option value="2">Did Not Cooperate</option>
+            <option value="3">No Answer</option>
+        </select>
+        <br>
+        <textarea rows="5" cols="1" style="width: 550px;" name="phoneEngagementDetailDescription" value="">
+The analyst called claiming to be {{log.spoofed}} asking the user {{log.pretext}}.  {{log.notes}}.  The analyst thanked the user and ended the call.  {{log.breached}}
+        </textarea>
+        <a href="#" onclick="removePhoneEngagementDetail(event, this.parentNode.parentNode);return false;" style="FONT-SIZE: larger; FONT-WEIGHT: bold" title="Marks the phone call detail for deletion.">
+            <img title="Remove Detail" src="/images/delete2.gif">
+        </a>
+    </td>
+</tr>
+</pre>

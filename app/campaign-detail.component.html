@@ -1,0 +1,31 @@
+<div *ngIf="!campaign">
+    Loading campaign...
+</div>
+<div *ngIf="campaign">
+    <div id="campaign-info">
+        <div>Current Time {{clock | async | date:'shortTime'}}</div>
+        <div>{{campaign.name}} {{getNumFailed()}} {{getNumPassed()}} {{getNumNoAnswer()}} </div>
+        <div>{{campaign.company}}</div>
+        <div>{{campaign.pretext}}</div>
+        <div>{{campaign.open}} - {{campaign.close}} {{campaign.tz}}</div>
+        <div>{{campaign.notes}}</div>
+        <button (click)="addRandomUser()">Add Random User</button>
+        <button (click)="showUserChooser()">Add User Manually</button>
+        <button (click)="update(campaign)">Save</button>
+        <button (click)="getReport()">Report</button>
+        <button (click)="editCampaignInfo()">Edit Campaign</button>
+    </div>
+    <div id="campaign-log">
+        <div *ngFor="let l of campaign.log">
+            <my-log [log]="l" [campaign]="campaign"></my-log>
+        </div>
+        <div id="user-chooser" *ngIf="user_chooser_active">
+            <div *ngFor="let user of campaign.contacts; let idx=index">
+                <div (click)="selectUser(idx)" *ngIf="!user.selected">
+                    {{user.name}} {{user.phone}} {{user.info}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
